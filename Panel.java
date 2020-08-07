@@ -16,17 +16,21 @@ public class Panel extends JPanel implements MouseListener	{
 		addMouseListener(this);
 	}
 	
+	//this covers the entire panel essentially erasing it
+	//then redraws it with updated numbers
 	public void paintComponent(Graphics g)	{
 		blank(g);
 		drawUI(g);
 		drawNumber(g);
 	}
 
+	//covers the panel
 	public void blank(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(0, 0 , 400, 700);
 	}
 
+	//draws the number the player has inputed
 	public void drawNumber(Graphics g) {
 		String s;
 		Font font = new Font("Helvetica", Font.BOLD, 100);
@@ -40,6 +44,7 @@ public class Panel extends JPanel implements MouseListener	{
 		g.drawString(s,0,200);
 	}
 
+	//draws the outline of the calculator and the different buttons
 	public void drawUI(Graphics g) {
 		Font font = new Font("Helvetica", Font.BOLD, 100);
 		g.setColor(Color.black);
@@ -74,6 +79,8 @@ public class Panel extends JPanel implements MouseListener	{
 		g.drawString("%", 200, 300);
 	}
 	
+	//the button one is pushed
+	//one is stored as either the first or second number
 	public void one() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -89,6 +96,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button two is pushed
+	//two is stored as either the first or second number
 	public void two() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -104,6 +113,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button three is pushed
+	//three is stored as either the first or second number
 	public void three() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -119,6 +130,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button four is pushed
+	//four is stored as either the first or second number
 	public void four() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -134,6 +147,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button five is pushed
+	//five is stored as either the first or second number
 	public void five() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -149,6 +164,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button six is pushed
+	//six is stored as either the first or second number
 	public void six() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -164,6 +181,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button seven is pushed
+	//seven is stored as either the first or second number
 	public void seven() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -179,6 +198,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button eight is pushed
+	//eight is stored as either the first or second number
 	public void eight() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -194,6 +215,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button nine is pushed
+	//nine is stored as either the first or second number
 	public void nine() {
 		if(first) {
 			if(firstNumber.equals("0"))
@@ -209,6 +232,8 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 	
+	//the button zero is pushed
+	//zero is stored as either the first or second number
 	public void zero() {
 		if(first) {
 			if(!firstNumber.equals("0"))
@@ -220,26 +245,31 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 
+	//addition will be executed
 	public void addition() {
 		s = Symbol.Add;
 		first = false;
 	}
 
+	//subtraction will be executed
 	public void subtract() {
 		s = Symbol.Subtract;
 		first = false;
 	}
 
+	//multiplication will be executed
 	public void multiply() {
 		s = Symbol.Multiply;
 		first = false;
 	}
 
+	//division will be executed
 	public void divide() {
 		s = Symbol.Divide;
 		first = false;
 	}
 
+	//percent will be executed
 	public void percent() {
 		if(first) {
 			double temp = Double.valueOf(firstNumber);
@@ -253,6 +283,7 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 
+	//the number will be converted to be either positive or negative 
 	public void invert() {
 		if(first) {
 			double temp = Double.valueOf(firstNumber);
@@ -266,11 +297,13 @@ public class Panel extends JPanel implements MouseListener	{
 		}
 	}
 
+	//clears the stored numbers
 	public void clear() {
 		firstNumber = "0";
 		secondNumber = "0";
 	}
 
+	//execute the mathematical operation
 	public void equal() {
 		double tempOne = Double.valueOf(firstNumber);
 		double tempTwo = Double.valueOf(secondNumber);
@@ -296,6 +329,7 @@ public class Panel extends JPanel implements MouseListener	{
 		first = true;
 	}
 
+	//adds a decimal to the integer
 	public void dot() {
 		if(first)
 			firstNumber += ".";
@@ -303,6 +337,7 @@ public class Panel extends JPanel implements MouseListener	{
 			secondNumber += ".";
 	}
 
+	//deletes a number
 	public void delete() {
 		if(first) {
 			if(!firstNumber.equals("0"))
@@ -313,6 +348,7 @@ public class Panel extends JPanel implements MouseListener	{
 				secondNumber = secondNumber.substring(0, secondNumber.length() - 1);
 	}
 
+	//repaints the frame
 	private class Listener implements ActionListener	{
 		public void actionPerformed(ActionEvent e)	{        
 			repaint();
@@ -322,6 +358,7 @@ public class Panel extends JPanel implements MouseListener	{
 	public void mousePressed(MouseEvent e) 	{
 	}
 
+	//determines which button is pressed based on the mouse's location 
 	public void mouseReleased(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
